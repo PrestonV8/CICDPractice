@@ -1,6 +1,6 @@
 name: CI
 
-# This is a CI test
+# This is a CI test. this is test 2
 on:
     push:
         branches: ["main"]
