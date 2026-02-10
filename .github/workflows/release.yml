@@ -1,0 +1,16 @@
+name: Manual Release
+
+on:
+    workflow_dispatch:
+
+jobs:
+    release:
+        runs-on: ubuntu-Latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Simulate release
+              run: |
+                echo "Releasing version 1.0.0"
+                echo "Version 1.0.0"
+                echo "Release completed successfully"
