@@ -4,14 +4,14 @@ on:
     workflow_dispatch:
         inputs:
             version:
-                description: "Release version (e.g., 1.0.1)"
+                desecription: "Release version (e.g., 1.0.1)"
                 required: true
                 default: "1.0.1"
             environment:
                 description: "Where to release"
                 required: true
-                type: choice
                 default: "staging"
+                type: choice
                 options:
                     - staging
                     - production
@@ -20,19 +20,19 @@ on:
 jobs:
     release:
         runs-on: ubuntu-latest
-        environment: ${{ github.event.inputs.environment}}
+        environment: ${{github.event.inputs.environment}}
 
-        steps: 
+        steps:
             - uses: actions/checkout@v4
 
             - name: Create release artifact
               run: |
                 mkdir -p dist
-                echo "Version: ${{ github.event.inputs.version}}" > dist/release.txt
+                echo "Version: ${{github.event.inputs.version}}" > dist/release.txt
                 echo "Commit: $GITHUB_SHA" >> dist/release.txt
                 echo "Environment: ${{github.event.inputs.environment}}" >> dist/release.txt
 
-            - name: upload artifact
+            - name: Upload artifact
               uses: actions/upload-artifact@v4
               with:
                 name: release-${{github.event.inputs.version}}-${{github.event.inputs.environment}}
